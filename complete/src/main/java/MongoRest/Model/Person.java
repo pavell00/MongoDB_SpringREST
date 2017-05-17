@@ -1,4 +1,4 @@
-package hello;
+package MongoRest.Model;
 
 import org.springframework.data.annotation.Id;
 
