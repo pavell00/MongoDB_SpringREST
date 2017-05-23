@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "document", path = "document")
-public interface DocumentRepository extends MongoRepository<Document, Integer> {
+public interface DocumentRepository extends MongoRepository<Document, Long> {
 
 	List<Document> findByFldId(@Param("fldid") Long fldid);
 	//Document findByDocId(@Param("docid") Long docid);
