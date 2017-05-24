@@ -1,4 +1,4 @@
-package MongoRest.Model;
+package SQLRest.Model;
 
 public abstract class NamedEntity extends BaseEntity {
 

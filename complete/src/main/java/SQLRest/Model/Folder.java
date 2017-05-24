@@ -1,14 +1,14 @@
-package MongoRest.Model;
+package SQLRest.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Set;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "vw_folders")
-public class Folder {
+public class Folder implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -26,23 +26,23 @@ public class Folder {
     @Column(name = "type_folder")
     private String typeFolder;
 
-    //private Long formId;
+    @Column(name = "tml_id")
+    private Long tmlId;
 
     public Folder(){}
 
-    public Folder(Long id, String name, Boolean children, Long rootId, String typeFolder){}
+    public Folder(Long id, String name, Boolean children, Long rootId, String typeFolder, long tmlId){}
 
     public Folder(Folder folder){
         this(folder.getId(), folder.getName(), folder.getChildren(),
-        folder.getRootId(), folder.getTypeFolder());
-               // , folder.getFormId());
+        folder.getRootId(), folder.getTypeFolder(), folder.getTmlId());
     }
 
-    public Folder(Long id, String name, Long rootId, String typeFolder, Long formId){
+    public Folder(Long id, String name, Long rootId, String typeFolder, Long tmlId){
         this.id = id;
         this.name = name;
         this.typeFolder = typeFolder;
-        //this.formId = formId;
+        this.tmlId = tmlId;
     }
 
     public void setId(Long id) {
@@ -85,13 +85,13 @@ public class Folder {
         this.typeFolder = typeFolder;
     }
 
-    /*public Long getFormId() {
-        return formId;
+    public Long getTmlId() {
+        return tmlId;
     }
 
-    public void setFormId(Long formId) {
-        this.formId = formId;
-    }*/
+    public void setTmlId(Long tmlId) {
+        this.tmlId = tmlId;
+    }
 
     @Override
     public String toString(){
@@ -99,7 +99,7 @@ public class Folder {
                 "id=" + getId() +
                 ", name=" + getName() +
                 ", typeFolder=" + getTypeFolder() +
-              //  ", formId=" + getFormId() +
+                ", tmlId=" + getTmlId() +
                 ")";
     }
 }

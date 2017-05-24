@@ -1,4 +1,4 @@
-package MongoRest.Model;
+package SQLRest.Model;
 
 import org.springframework.data.annotation.Id;
 

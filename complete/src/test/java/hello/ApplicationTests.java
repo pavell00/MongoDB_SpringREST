@@ -16,7 +16,7 @@
 
 package hello;
 
-import MongoRest.Repository.PersonRepository;
+import SQLRest.Repository.DocumentRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +42,7 @@ public class ApplicationTests {
 	private MockMvc mockMvc;
 
 	@Autowired
-	private PersonRepository personRepository;
+	private DocumentRepository personRepository;
 
 	@Before
 	public void deleteAllBeforeTests() throws Exception {
