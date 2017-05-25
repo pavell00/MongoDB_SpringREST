@@ -1,11 +1,8 @@
 package SQLRest.Model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Currency;
 
 @Entity
 @Table(name = "documents")
