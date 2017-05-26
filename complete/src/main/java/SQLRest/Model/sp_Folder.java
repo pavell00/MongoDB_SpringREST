@@ -1,14 +1,24 @@
 package SQLRest.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
+@NamedStoredProcedureQuery(
+        name = "callStoreProcedure",
+        resultClasses = sp_Folder.class,
+        procedureName = "sp_folders",
+        parameters = {
+            @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "rootId"),
+            @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typefolder"),
+        }
+    )
+
 @Entity
-@Table(name = "vw_folders")
-public class Folder implements Serializable {
+@Table(name = "sp_Folder")
+public class sp_Folder implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -29,16 +39,16 @@ public class Folder implements Serializable {
     @Column(name = "tml_id")
     private Long tmlId;
 
-    public Folder(){}
+    public sp_Folder(){}
 
-    public Folder(Long id, String name, Boolean children, Long rootId, String typeFolder, long tmlId){}
+    public sp_Folder(Long id, String name, Boolean children, Long rootId, String typeFolder, long tmlId){}
 
-    public Folder(Folder folder){
+    public sp_Folder(sp_Folder folder){
         this(folder.getId(), folder.getName(), folder.getIsChildren(),
         folder.getRootId(), folder.getTypeFolder(), folder.getTmlId());
     }
 
-    public Folder(Long id, String name, Boolean children, Long rootId, String typeFolder, Long tmlId){
+    public sp_Folder(Long id, String name, Boolean children, Long rootId, String typeFolder, Long tmlId){
         this.id = id;
         this.name = name;
         this.isChildren = children;
