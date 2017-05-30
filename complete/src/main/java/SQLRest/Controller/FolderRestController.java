@@ -27,7 +27,7 @@ public class FolderRestController {
     }*/
 
     @RequestMapping(value = "/folders", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Folder> getFolders(@RequestParam("rootId") Long rootId, @RequestParam("typeFolder") String typeFolder) {
+    public List<Folder> getFolders(@RequestParam("rootid") Long rootId, @RequestParam("typefolder") String typeFolder) {
         List<Folder> folderList = folderRepository.findByRootIdAndTypeFolderOrderByName(rootId, typeFolder);
         return folderList;
     }

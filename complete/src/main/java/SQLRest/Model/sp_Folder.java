@@ -6,18 +6,17 @@ import org.hibernate.annotations.NamedNativeQuery;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "vw_folders")
 @NamedStoredProcedureQuery(
         name = "callStoreProcedure",
         resultClasses = sp_Folder.class,
         procedureName = "sp_folders",
         parameters = {
-            @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "rootId"),
-            @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typefolder"),
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "rootId"),
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typefolder"),
         }
-    )
-
-@Entity
-@Table(name = "sp_Folder")
+)
 public class sp_Folder implements Serializable {
 
     @Id

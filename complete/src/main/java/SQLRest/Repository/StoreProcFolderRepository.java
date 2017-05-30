@@ -2,6 +2,7 @@ package SQLRest.Repository;
 
 import SQLRest.Model.sp_Folder;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,6 @@ public interface StoreProcFolderRepository extends JpaRepository<sp_Folder, Long
     List<sp_Folder> findByRootIdOrderByName(@Param("root_id") Long root_id);
     List<sp_Folder> findByRootIdAndTypeFolderOrderByName(@Param("rootId") Long root_id,
                                                       @Param("typeFolder") String type_folder);
+    @Procedure
+    List<sp_Folder> sp_folders(@Param("root_id") Long root_id);
 }

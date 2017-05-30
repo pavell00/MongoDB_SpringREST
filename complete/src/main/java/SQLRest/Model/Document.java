@@ -27,14 +27,19 @@ public class Document implements Serializable {
     @Column(name = "doc_name")
     private String docName;
 
+    @Column(name = "fld_id")
+    private Long fldId;
+
     public Document(){}
 
-    public Document(Long Id, LocalDate docDate, Integer docDone, String docNo, Double docSum, String docName){}
+    public Document(Long Id, LocalDate docDate, Integer docDone, String docNo,
+                    Double docSum, String docName, Long fldId){}
 
     public Document(Document document){
         this(document.getId(), document.getDocDate(),
                 document.getDocDone(), document.getDocNo(),
-                document.getDocSum(), document.getDocName());
+                document.getDocSum(), document.getDocName(),
+                document.getFldId());
     }
 
     /*public Document(Long docId, LocalDate docDate, Integer docDone, String docNo, Currency docSum, String docName) {
@@ -94,6 +99,14 @@ public class Document implements Serializable {
         this.docName = docName;
     }
 
+    public Long getFldId() {
+        return fldId;
+    }
+
+    public void setFldId(Long fldId) {
+        this.fldId = fldId;
+    }
+
     @Override
     public String toString() {
         return "Document{" +
@@ -103,6 +116,7 @@ public class Document implements Serializable {
                 ", docNo='" + docNo + '\'' +
                 ", docSum=" + docSum +
                 ", docName='" + docName + '\'' +
+                ", fldId=" + fldId +
                 '}';
     }
 }
