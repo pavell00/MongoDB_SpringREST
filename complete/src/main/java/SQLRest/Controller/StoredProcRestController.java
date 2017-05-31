@@ -15,8 +15,8 @@ public class StoredProcRestController {
     private StoreProcFolderRepository storeProcFolderRepository;
 
     @RequestMapping(value = "/sp_folders", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<sp_Folder> getFolders(@RequestParam("rootId") Long rootId, @RequestParam("typeFolder") String typeFolder) {
-        List<sp_Folder> folderList = storeProcFolderRepository.findByRootIdAndTypeFolderOrderByName(rootId, typeFolder);
+    public List<sp_Folder> getFolders(@RequestParam("rootid") Long rootId, @RequestParam("typefolder") String typeFolder) {
+        List<sp_Folder> folderList = storeProcFolderRepository.getFoldersFromStoreProcedure(rootId, typeFolder);
         return folderList;
     }
 }
