@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @NamedStoredProcedureQuery(
-        name = "callStoreProcedure",
+        name = "call_sp_folders",
         resultClasses = sp_Folder.class,
         procedureName = "sp_folders",
         parameters = {

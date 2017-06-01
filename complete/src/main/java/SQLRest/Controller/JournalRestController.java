@@ -1,7 +1,7 @@
 package SQLRest.Controller;
 
 import SQLRest.Model.Journal;
-import SQLRest.Repository.JournalRepository;
+import SQLRest.Repository.Jpa.JournalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

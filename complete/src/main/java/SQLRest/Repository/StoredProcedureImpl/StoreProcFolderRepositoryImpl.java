@@ -1,18 +1,13 @@
-package SQLRest.Repository;
+package SQLRest.Repository.StoredProcedureImpl;
 
 import SQLRest.Model.sp_Folder;
+import SQLRest.Repository.StoredProcedure.StoreProcFolderRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 import java.util.List;
-import java.util.stream.Collectors;
-
-/**
- * Created by net_master on 31.05.2017.
- */
 
 @Repository
 public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository {
@@ -21,18 +16,18 @@ public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository 
     private EntityManager entityManager;
 
     @Override
-    public List<sp_Folder> getFoldersFromStoreProcedure(Long root_id, String type_folder) {
+    public List<sp_Folder> getFolders_sp(Long root_id, String type_folder) {
 
-        StoredProcedureQuery storedProcedureQuery = entityManager.createNamedStoredProcedureQuery("callStoreProcedure");
+        StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery("call_sp_folders");
 
         //  Set the parameters of the stored procedure.
-        storedProcedureQuery.setParameter("rootid", root_id);
-        storedProcedureQuery.setParameter("typefolder", type_folder);
+        query.setParameter("rootid", root_id);
+        query.setParameter("typefolder", type_folder);
 
         // Call the stored procedure.
-        List<sp_Folder> storedProcedureQueryResultList = storedProcedureQuery.getResultList();
+        List<sp_Folder> queryResultList = query.getResultList();
 
-        /*storedProcedureQueryResultList.stream().map(result -> new sp_Folder(
+        /*queryResultList.stream().map(result -> new sp_Folder(
                 (Long) result[0],
                 (String) result[1],
                 (Boolean) result[2],
@@ -41,6 +36,6 @@ public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository 
                 (Long) result[5]
         )).collect(Collectors.toList());*/
 
-        return storedProcedureQueryResultList;
+        return queryResultList;
     }
 }

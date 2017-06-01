@@ -1,4 +1,4 @@
-package SQLRest.Repository;
+package SQLRest.Repository.Jpa;
 
 import SQLRest.Model.Journal;
 import org.springframework.data.jpa.repository.JpaRepository;

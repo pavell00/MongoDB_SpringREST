@@ -1,7 +1,7 @@
 package SQLRest.Controller;
 
 import SQLRest.Model.Document;
-import SQLRest.Repository.DocumentRepository;
+import SQLRest.Repository.Jpa.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;

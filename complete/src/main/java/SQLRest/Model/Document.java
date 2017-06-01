@@ -5,7 +5,16 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "documents")
+@NamedStoredProcedureQuery(
+        name = "call_sp_documents",
+        resultClasses = Document.class,
+        procedureName = "sp_documents",
+        parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "rootid"),
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = LocalDate.class, name = "startdate"),
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = LocalDate.class, name = "enddate")
+        }
+)
 public class Document implements Serializable {
 
     @Id

@@ -1,7 +1,7 @@
 package SQLRest.Controller;
 
 import SQLRest.Model.Folder;
-import SQLRest.Repository.FolderRepository;
+import SQLRest.Repository.Jpa.FolderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
