@@ -28,14 +28,16 @@ public class FolderRestController {
 
     @RequestMapping(value = "/folders", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Folder> getFolders(@RequestParam("rootid") Long rootId, @RequestParam("typefolder") String typeFolder) {
-        List<Folder> folderList = folderRepository.findByRootIdAndTypeFolderOrderByName(rootId, typeFolder);
-        return folderList;
+        /*List<Folder> folderList = folderRepository.findByRootIdAndTypeFolderOrderByName(rootId, typeFolder);
+        return folderList;*/
+        return null;
     }
 
     @RequestMapping(value = "/folder", method = RequestMethod.GET, headers = "Accept=application/json")
     public Folder getFolder(@RequestParam("id") Long id) {
-        Folder folder = folderRepository.findById(id);
-        return folder;
+        /*Folder folder = folderRepository.findById(id);
+        return folder;*/
+        return null;
     }
     /*@RequestMapping(value = "/folders/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     public Folder getFolder(@PathVariable("id") Long id) {

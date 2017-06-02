@@ -1,13 +1,18 @@
 package SQLRest.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "journal")
-public class Journal {
+@NamedStoredProcedureQuery(
+        name = "call_sp_journals",
+        resultClasses = Journal.class,
+        procedureName = "sp_journals",
+        parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "docid")
+        }
+)
+public class Journal implements Serializable {
 
     @Id
     @Column(name = "j_id")
@@ -34,9 +39,79 @@ public class Journal {
     @Column(name = "j_price")
     private Double jPrice;
 
+    @Column(name = "acc_db")
+    private Long jAccDb;
+
+    @Column(name = "acc_cr")
+    private Long jAccCr;
+
+    @Column(name = "j_ag1")
+    private Long jAg1;
+
+    @Column(name = "j_Ag2")
+    private Long jAg2;
+
+    @Column(name = "ag1_name")
+    private String jAg1name;
+
+    @Column(name = "ag2_name")
+    private String jAg2name;
+
+    @Column(name = "ent_name")
+    private String entName;
+
+    public Long getjAccDb() {
+        return jAccDb;
+    }
+
+    public void setjAccDb(Long jAccDb) {
+        this.jAccDb = jAccDb;
+    }
+
+    public Long getjAccCr() {
+        return jAccCr;
+    }
+
+    public void setjAccCr(Long jAccCr) {
+        this.jAccCr = jAccCr;
+    }
+
+    public Long getjAg1() {
+        return jAg1;
+    }
+
+    public void setjAg1(Long jAg1) {
+        this.jAg1 = jAg1;
+    }
+
+    public Long getjAg2() {
+        return jAg2;
+    }
+
+    public void setjAg2(Long jAg2) {
+        this.jAg2 = jAg2;
+    }
+
+    public String getjAg1name() {
+        return jAg1name;
+    }
+
+    public void setjAg1name(String jAg1name) {
+        this.jAg1name = jAg1name;
+    }
+
+    public String getjAg2name() {
+        return jAg2name;
+    }
+
+    public void setjAg2name(String jAg2name) {
+        this.jAg2name = jAg2name;
+    }
+
     public Journal(){}
 
-    public Journal(Long id, Long docId, Long jTrNo, Long jLnNo, Double jSum, Double jQty, Long jEnt, Double jPrice) {
+    public Journal(Long id, Long docId, Long jTrNo, Long jLnNo, Double jSum, Double jQty, Long jEnt, Double jPrice,
+                   Long jAccDb, Long jAccCr, Long jAg1, Long jAg2, String jAg1name, String jAg2name, String entName) {
         this.id = id;
         this.docId = docId;
         this.jTrNo = jTrNo;
@@ -45,6 +120,13 @@ public class Journal {
         this.jQty = jQty;
         this.jEnt = jEnt;
         this.jPrice = jPrice;
+        this.jAccDb = jAccDb;
+        this.jAccCr = jAccCr;
+        this.jAg1 = jAg1;
+        this.jAg2 = jAg2;
+        this.jAg1name = jAg1name;
+        this.jAg2name = jAg2name;
+        this.entName = entName;
     }
 
     public Long getId() {
@@ -109,5 +191,13 @@ public class Journal {
 
     public void setjPrice(Double jPrice) {
         this.jPrice = jPrice;
+    }
+
+    public String getEntName() {
+        return entName;
+    }
+
+    public void setEntName(String entName) {
+        this.entName = entName;
     }
 }

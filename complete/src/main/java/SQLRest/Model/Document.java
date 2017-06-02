@@ -1,8 +1,11 @@
 package SQLRest.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @NamedStoredProcedureQuery(
@@ -21,8 +24,9 @@ public class Document implements Serializable {
     @Column(name = "doc_id")
     private Long id;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "doc_date")
-    private LocalDate docDate;
+    private LocalDateTime docDate;
 
     @Column(name = "doc_done")
     private Integer docDone;
@@ -41,7 +45,7 @@ public class Document implements Serializable {
 
     public Document(){}
 
-    public Document(Long Id, LocalDate docDate, Integer docDone, String docNo,
+    public Document(Long Id, LocalDateTime docDate, Integer docDone, String docNo,
                     Double docSum, String docName, Long fldId){}
 
     public Document(Document document){
@@ -68,11 +72,11 @@ public class Document implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDocDate() {
+    public LocalDateTime getDocDate() {
         return docDate;
     }
 
-    public void setDocDate(LocalDate docDate) {
+    public void setDocDate(LocalDateTime docDate) {
         this.docDate = docDate;
     }
 

@@ -1,6 +1,6 @@
 package SQLRest.Repository.StoredProcedureImpl;
 
-import SQLRest.Model.sp_Folder;
+import SQLRest.Model.Folder;
 import SQLRest.Repository.StoredProcedure.StoreProcFolderRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +16,7 @@ public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository 
     private EntityManager entityManager;
 
     @Override
-    public List<sp_Folder> getFolders_sp(Long root_id, String type_folder) {
+    public List<Folder> getFolders_sp(Long root_id, String type_folder) {
 
         StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery("call_sp_folders");
 
@@ -25,7 +25,7 @@ public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository 
         query.setParameter("typefolder", type_folder);
 
         // Call the stored procedure.
-        List<sp_Folder> queryResultList = query.getResultList();
+        List<Folder> queryResultList = query.getResultList();
 
         /*queryResultList.stream().map(result -> new sp_Folder(
                 (Long) result[0],

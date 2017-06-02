@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface StoreProcDocumentsRepository {
+public interface StoreProcDocumentRepository {
 
     List<Document> getDocuments_sp(Long root_id, LocalDate startDate, LocalDate endDate);
 }

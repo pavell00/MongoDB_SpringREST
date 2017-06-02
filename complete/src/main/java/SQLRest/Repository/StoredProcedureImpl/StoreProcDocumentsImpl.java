@@ -1,7 +1,7 @@
 package SQLRest.Repository.StoredProcedureImpl;
 
 import SQLRest.Model.Document;
-import SQLRest.Repository.StoredProcedure.StoreProcDocumentsRepository;
+import SQLRest.Repository.StoredProcedure.StoreProcDocumentRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public class StoreProcDocumentsImpl implements StoreProcDocumentsRepository {
+public class StoreProcDocumentsImpl implements StoreProcDocumentRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
