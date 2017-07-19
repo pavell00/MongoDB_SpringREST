@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class StoreProcDocumentsImpl implements StoreProcDocumentRepository {
@@ -27,8 +29,20 @@ public class StoreProcDocumentsImpl implements StoreProcDocumentRepository {
         query.setParameter("startdate", startDate);
         query.setParameter("enddate", endDate);
         query.setParameter("typedir", typeDir);
+
         // Call the stored procedure.
         List<Document> queryResultList = query.getResultList();
-        return queryResultList;
+
+        return queryResultList.stream().map(result -> new Document(
+                (Long) result.getId(),
+                (LocalDateTime) result.getDocDate(),
+                (Integer) result.getDocDone(),
+                (String) result.getDocNo(),
+                (Double) result.getDocSum(),
+                (String) result.getDocName(),
+                (Long) result.getFldId()
+        )).collect(Collectors.toList());
+
+        //return queryResultList;
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class StoreProcJournalsRepositoryImpl implements StoreProcJournalRepository {
@@ -25,6 +26,25 @@ public class StoreProcJournalsRepositoryImpl implements StoreProcJournalReposito
 
         // Call the stored procedure.
         List<Journal> queryResultList = query.getResultList();
-        return queryResultList;
+
+        return queryResultList.stream().map(result -> new Journal(
+                (Long) result.getId(),
+                (Long) result.getDocId(),
+                (Long) result.getjTrNo(),
+                (Long) result.getjLnNo(),
+                (Double) result.getjSum(),
+                (Double) result.getjQty(),
+                (Long) result.getjEnt(),
+                (Double) result.getjPrice(),
+                (Long) result.getjAccDb(),
+                (Long) result.getjAccCr(),
+                (Long) result.getjAg1(),
+                (Long) result.getjAg2(),
+                (String) result.getjAg1name(),
+                (String) result.getjAg2name(),
+                (String) result.getEntName()
+        )).collect(Collectors.toList());
+
+        //return queryResultList;
     }
 }

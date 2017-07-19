@@ -47,6 +47,7 @@ public class Folder implements Serializable {
         this.id = id;
         this.name = name;
         this.isChildren = children;
+        this.rootId = rootId;
         this.typeFolder = typeFolder;
         this.tmlId = tmlId;
     }

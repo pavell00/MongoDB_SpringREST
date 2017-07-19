@@ -60,54 +60,6 @@ public class Journal implements Serializable {
     @Column(name = "ent_name")
     private String entName;
 
-    public Long getjAccDb() {
-        return jAccDb;
-    }
-
-    public void setjAccDb(Long jAccDb) {
-        this.jAccDb = jAccDb;
-    }
-
-    public Long getjAccCr() {
-        return jAccCr;
-    }
-
-    public void setjAccCr(Long jAccCr) {
-        this.jAccCr = jAccCr;
-    }
-
-    public Long getjAg1() {
-        return jAg1;
-    }
-
-    public void setjAg1(Long jAg1) {
-        this.jAg1 = jAg1;
-    }
-
-    public Long getjAg2() {
-        return jAg2;
-    }
-
-    public void setjAg2(Long jAg2) {
-        this.jAg2 = jAg2;
-    }
-
-    public String getjAg1name() {
-        return jAg1name;
-    }
-
-    public void setjAg1name(String jAg1name) {
-        this.jAg1name = jAg1name;
-    }
-
-    public String getjAg2name() {
-        return jAg2name;
-    }
-
-    public void setjAg2name(String jAg2name) {
-        this.jAg2name = jAg2name;
-    }
-
     public Journal(){}
 
     public Journal(Long id, Long docId, Long jTrNo, Long jLnNo, Double jSum, Double jQty, Long jEnt, Double jPrice,
@@ -191,6 +143,54 @@ public class Journal implements Serializable {
 
     public void setjPrice(Double jPrice) {
         this.jPrice = jPrice;
+    }
+
+    public Long getjAccDb() {
+        return jAccDb;
+    }
+
+    public void setjAccDb(Long jAccDb) {
+        this.jAccDb = jAccDb;
+    }
+
+    public Long getjAccCr() {
+        return jAccCr;
+    }
+
+    public void setjAccCr(Long jAccCr) {
+        this.jAccCr = jAccCr;
+    }
+
+    public Long getjAg1() {
+        return jAg1;
+    }
+
+    public void setjAg1(Long jAg1) {
+        this.jAg1 = jAg1;
+    }
+
+    public Long getjAg2() {
+        return jAg2;
+    }
+
+    public void setjAg2(Long jAg2) {
+        this.jAg2 = jAg2;
+    }
+
+    public String getjAg1name() {
+        return jAg1name;
+    }
+
+    public void setjAg1name(String jAg1name) {
+        this.jAg1name = jAg1name;
+    }
+
+    public String getjAg2name() {
+        return jAg2name;
+    }
+
+    public void setjAg2name(String jAg2name) {
+        this.jAg2name = jAg2name;
     }
 
     public String getEntName() {

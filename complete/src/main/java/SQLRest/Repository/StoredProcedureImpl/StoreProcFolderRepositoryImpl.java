@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository {
@@ -27,15 +28,15 @@ public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository 
         // Call the stored procedure.
         List<Folder> queryResultList = query.getResultList();
 
-        /*queryResultList.stream().map(result -> new sp_Folder(
-                (Long) result[0],
-                (String) result[1],
-                (Boolean) result[2],
-                (Long) result[3],
-                (String) result[4],
-                (Long) result[5]
-        )).collect(Collectors.toList());*/
+        return queryResultList.stream().map(result -> new Folder(
+                (Long) result.getId(),
+                (String) result.getName(),
+                (Boolean) result.getIsChildren(),
+                (Long) result.getRootId(),
+                (String) result.getTypeFolder(),
+                (Long) result.getTmlId()
+        )).collect(Collectors.toList());
 
-        return queryResultList;
+        //return queryResultList;
     }
 }

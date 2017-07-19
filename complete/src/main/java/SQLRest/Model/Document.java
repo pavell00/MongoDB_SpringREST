@@ -46,9 +46,6 @@ public class Document implements Serializable {
 
     public Document(){}
 
-    public Document(Long Id, LocalDateTime docDate, Integer docDone, String docNo,
-                    Double docSum, String docName, Long fldId){}
-
     public Document(Document document){
         this(document.getId(), document.getDocDate(),
                 document.getDocDone(), document.getDocNo(),
@@ -56,7 +53,18 @@ public class Document implements Serializable {
                 document.getFldId());
     }
 
-    /*public Document(Long docId, LocalDate docDate, Integer docDone, String docNo, Currency docSum, String docName) {
+    public Document(Long id, LocalDateTime docDate, Integer docDone, String docNo,
+                    Double docSum, String docName, Long fldId) {
+        this.id = id;
+        this.docDate = docDate;
+        this.docDone = docDone;
+        this.docNo = docNo;
+        this.docSum = docSum;
+        this.docName = docName;
+        this.fldId = fldId;
+    }
+
+    /*public Document(Long docId, LocalDateTime docDate, Integer docDone, String docNo, Double docSum, String docName) {
         this.id = id;
         this.docDate = docDate;
         this.docDone = docDone;
