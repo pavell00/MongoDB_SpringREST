@@ -5,31 +5,27 @@ import java.time.LocalDate;
 
 @Entity
 @NamedStoredProcedureQuery(
-        name = "call_sp_foldersJSON",
+        name = "call_sp_search_pricelistsJSON",
         resultClasses = test.class,
-        procedureName = "sp_foldersJSON",
-        parameters = {
-                @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "rootid"),
-                @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typefolder"),
-        }
+        procedureName = "sp_search_pricelists3"
 )
 public class test {
 
-    @Id
-    @Column(name = "id")
+    @EmbeddedId
     private Long Id;
 
     @Column(name = "JSON_F52E2B61-18A1-11d1-B105-00805F49916B")
-    private String result;
+    //@Column(name = "value")
+    private String value;
 
     public test(){}
 
     public test( String result) {
-        this.result = result;
+        this.value = result;
     }
 
     @Override
     public String toString() {
-        return  result;
+        return  value;
     }
 }

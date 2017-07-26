@@ -18,19 +18,19 @@ public class Entities implements Serializable {
 
     @Id
     @Column(name = "ent_id")
-    Long id;
+    private Long id;
 
     @Column(name = "ent_type")
-    Long entType;
+    private Long entType;
 
     @Column(name = "ent_name")
-    String entName;
+    private String entName;
 
     @Column(name = "ent_cat")
-    Long entCat;
+    private Long entCat;
 
     @Column(name = "ent_nom")
-    Long entNom;
+    private Long entNom;
 
     public Entities() {
     }

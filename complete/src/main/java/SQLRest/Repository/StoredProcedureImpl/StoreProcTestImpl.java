@@ -6,25 +6,37 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
+import java.io.InputStream;
+import java.sql.*;
 import java.util.List;
 
 @Repository
 public class StoreProcTestImpl {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    public String getTest_sp() throws SQLException {
 
-    public String getTest_sp(Long root_id, String type_folder) {
+        String queryResult;
+        Connection con = DriverManager.getConnection(
+                "jdbc:sqlserver://172.16.13.66\\\\SQL2:51880;databaseName=DGMZ2_DC3",
+                "sa",
+                "Radeon223245");
+        CallableStatement proc = con.prepareCall("{ call dbo.sp_search_pricelists3() }");
+        proc.executeQuery();
+        ResultSet resultSet = proc.getResultSet();
+        if (resultSet.next()){
+            queryResult = resultSet.getString(1);
+            System.out.println(queryResult.length());
+            System.out.println(queryResult);
 
-        StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery("call_sp_foldersJSON");
+            /*Clob clob = resultSet.getClob(1);
+            InputStream is = clob.getAsciiStream();*/
+        } else {
+            return queryResult = "";
+        }
 
-        //  Set the parameters of the stored procedure.
-        query.setParameter("rootid", root_id);
-        query.setParameter("typefolder", type_folder);
-
-        // Call the stored procedure.
-        String queryResult =  query.getSingleResult().toString();
-
+        if(resultSet != null) resultSet.close();
+        if(proc != null) proc.close();
+        if (con != null) proc.close();
         return queryResult;
     }
 }
