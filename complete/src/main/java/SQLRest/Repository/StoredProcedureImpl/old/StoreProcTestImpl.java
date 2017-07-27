@@ -1,37 +1,29 @@
-package SQLRest.Repository.StoredProcedureImpl;
+package SQLRest.Repository.StoredProcedureImpl.old;
 
-import SQLRest.Model.test;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.StoredProcedureQuery;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.List;
 
 @Repository
 public class StoreProcTestImpl {
 
     public String getTest_sp() throws SQLException {
+        String queryResult = "";
 
-        String queryResult;
         Connection con = DriverManager.getConnection(
                 "jdbc:sqlserver://172.16.13.66\\\\SQL2:51880;databaseName=DGMZ2_DC3",
                 "sa",
                 "Radeon223245");
-        CallableStatement proc = con.prepareCall("{ call dbo.sp_search_pricelists3() }");
+        CallableStatement proc = con.prepareCall("{ call dbo.sp_search_pricelists() }");
         proc.executeQuery();
         ResultSet resultSet = proc.getResultSet();
-        if (resultSet.next()){
-            queryResult = resultSet.getString(1);
-            System.out.println(queryResult.length());
-            System.out.println(queryResult);
+        while (resultSet.next()){
+            queryResult += resultSet.getString(1);
+            //System.out.println(queryResult.length());
+            //System.out.println(queryResult);
 
             /*Clob clob = resultSet.getClob(1);
             InputStream is = clob.getAsciiStream();*/
-        } else {
-            return queryResult = "";
         }
 
         if(resultSet != null) resultSet.close();

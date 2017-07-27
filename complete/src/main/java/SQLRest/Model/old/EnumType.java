@@ -1,4 +1,4 @@
-package SQLRest.Model;
+package SQLRest.Model.old;
 
 public enum EnumType {
     Document_type,

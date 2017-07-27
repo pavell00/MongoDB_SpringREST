@@ -1,6 +1,6 @@
-package SQLRest.Repository.StoredProcedureImpl;
+package SQLRest.Repository.StoredProcedureImpl.old;
 
-import SQLRest.Model.OneField;
+import SQLRest.Model.old.OneField;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

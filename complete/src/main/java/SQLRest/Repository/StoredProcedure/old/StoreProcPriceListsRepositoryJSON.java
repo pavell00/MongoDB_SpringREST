@@ -1,6 +1,6 @@
-package SQLRest.Repository.StoredProcedure;
+package SQLRest.Repository.StoredProcedure.old;
 
-import SQLRest.Model.PriceListsJSON;
+import SQLRest.Model.old.PriceListsJSON;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

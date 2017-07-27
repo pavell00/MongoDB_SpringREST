@@ -1,4 +1,4 @@
-package SQLRest.Model;
+package SQLRest.Model.old;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

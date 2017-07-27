@@ -1,7 +1,7 @@
-package SQLRest.Controller;
+package SQLRest.Controller.old;
 
-import SQLRest.Model.PriceListsJSON;
-import SQLRest.Repository.StoredProcedure.StoreProcPriceListsRepositoryJSON;
+import SQLRest.Model.old.PriceListsJSON;
+import SQLRest.Repository.StoredProcedure.old.StoreProcPriceListsRepositoryJSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,6 @@
-package SQLRest.Model;
+package SQLRest.Model.old;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @NamedStoredProcedureQuery(

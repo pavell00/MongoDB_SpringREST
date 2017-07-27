@@ -1,8 +1,8 @@
-package SQLRest.Repository.StoredProcedureImpl;
+package SQLRest.Repository.StoredProcedureImpl.old;
 
-import SQLRest.Model.Price;
-import SQLRest.Model.PriceLists;
-import SQLRest.Repository.StoredProcedure.StoreProcPriceListsRepository;
+import SQLRest.Model.old.Price;
+import SQLRest.Model.old.PriceLists;
+import SQLRest.Repository.StoredProcedure.old.StoreProcPriceListsRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

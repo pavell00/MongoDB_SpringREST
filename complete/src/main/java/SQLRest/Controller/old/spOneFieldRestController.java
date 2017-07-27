@@ -1,7 +1,7 @@
-package SQLRest.Controller;
+package SQLRest.Controller.old;
 
-import SQLRest.Model.OneField;
-import SQLRest.Repository.StoredProcedureImpl.StoreProcOneFieldRepositoryImpl;
+import SQLRest.Model.old.OneField;
+import SQLRest.Repository.StoredProcedureImpl.old.StoreProcOneFieldRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

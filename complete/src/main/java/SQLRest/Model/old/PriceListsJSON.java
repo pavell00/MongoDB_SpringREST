@@ -1,4 +1,4 @@
-package SQLRest.Model;
+package SQLRest.Model.old;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;

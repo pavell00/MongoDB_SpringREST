@@ -1,4 +1,4 @@
-package SQLRest.Model;
+package SQLRest.Model.old;
 
 import javax.persistence.*;
 import java.io.Serializable;
