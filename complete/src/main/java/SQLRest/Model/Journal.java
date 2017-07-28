@@ -18,6 +18,8 @@ public class Journal implements Serializable {
     @Column(name = "j_id")
     private Long id;
 
+    //@ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "doc_id")
     @Column(name = "doc_id")
     private Long docId;
 

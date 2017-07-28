@@ -1,5 +1,7 @@
 package SQLRest.Repository.StoredProcedureImpl;
 
+import SQLRest.ApplicationConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.session.SessionProperties;
 import org.springframework.stereotype.Repository;
 
@@ -10,13 +12,16 @@ import java.util.logging.Logger;
 @Repository
 public class StoreProcPriceListsJsonImpl {
 
-    public String getPriceLists_sp() throws SQLException {
-        String queryResult = "";
+    @Autowired
+    private ApplicationConfiguration appConfig;
 
+    public String getPriceLists_sp() throws SQLException {
+
+        String queryResult = "";
         Connection con = DriverManager.getConnection(
-                "jdbc:sqlserver://172.16.13.66\\\\SQL2:51880;databaseName=DGMZ2_DC3",
-                "sa",
-                "Radeon223245");
+                appConfig.appJdbcProp().get("url"),
+                appConfig.appJdbcProp().get("username"),
+                appConfig.appJdbcProp().get("password"));
         try {
             CallableStatement proc = con.prepareCall("{ call dbo.sp_search_pricelists() }");
             proc.executeQuery();
@@ -24,12 +29,10 @@ public class StoreProcPriceListsJsonImpl {
             while (resultSet.next()){
                 queryResult += resultSet.getString(1);
             }
-
             if (resultSet != null) resultSet.close();
             if (proc != null) proc.close();
-            if (con != null) proc.close();
-            return queryResult;
         } catch (Exception ex) {
+            queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
                     "getPriceLists_sp method, in class - StoreProcPriceListsJsonImpl ", ex);
         } finally {
@@ -40,7 +43,7 @@ public class StoreProcPriceListsJsonImpl {
                     Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            return "";
+            return queryResult;
         }
     }
 }

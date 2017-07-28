@@ -13,7 +13,7 @@ public class spTestRestController {
     @Autowired
     private StoreProcTestImpl storeProcTest;
 
-    @RequestMapping(value = "/sp_search_pricelists", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/sp_search_pricelists00", method = RequestMethod.GET, headers = "Accept=application/json")
     public String getFolders() throws SQLException {
         String folders = storeProcTest.getTest_sp();
         return folders;
