@@ -10,10 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Repository
-public class StoreProcPriceListsJsonImpl {
+public class StoreProcOperationsJsonImpl {
     @Autowired
     private ApplicationConfiguration appConfig;
-    public String getPriceLists_sp() throws SQLException {
+    public String getOperations_sp(Long docId) throws SQLException {
 
         String queryResult = "";
         Connection con = DriverManager.getConnection(
@@ -21,7 +21,9 @@ public class StoreProcPriceListsJsonImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_search_pricelists() }");
+            CallableStatement proc = con.prepareCall("{ call dbo.sp_search_operations(?) }");
+            //Задаём входные параметры
+            proc.setLong(1, docId);
             proc.executeQuery();
             ResultSet resultSet = proc.getResultSet();
             while (resultSet.next()){
@@ -32,7 +34,7 @@ public class StoreProcPriceListsJsonImpl {
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
-                    "getPriceLists_sp method, in class - StoreProcPriceListsJsonImpl ", ex);
+                    "getOperations_sp method, in class - StoreProcOperationsJsonImpl ", ex);
         } finally {
             if (con != null) {
                 try {
