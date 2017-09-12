@@ -14,9 +14,10 @@ public class spOperationsRestControllerJSON {
     StoreProcOperationsJsonImpl storeProcOperationsJson;
 
     @RequestMapping(value = "/sp_search_operations", method = RequestMethod.GET, headers = "Accept=application/json")
-    public String getPriceListsJSON(@RequestParam("docid") Long docId) throws SQLException {
+    public String getPriceListsJSON(@RequestParam("docid") Long docId,
+                                    @RequestParam("transno") Long trNo) throws SQLException {
 
-        String result = storeProcOperationsJson.getOperations_sp(docId);
+        String result = storeProcOperationsJson.getOperations_sp(docId, trNo);
         return result;
     }
 }
