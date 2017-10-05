@@ -21,7 +21,7 @@ public class StoreProcOperationsJsonImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_search_operations(?, ?) }");
+            CallableStatement proc = con.prepareCall("{ call dbo.sp_search_operation(?, ?) }");
             //Задаём входные параметры
             proc.setLong(1, docId);
             proc.setLong(2, trNo);
