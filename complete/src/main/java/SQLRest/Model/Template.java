@@ -31,15 +31,20 @@ public class Template implements Serializable {
     @Column(name = "tml_script")
     private String tmlScript;
 
+    @Column(name = "fld_id")
+    private Long fldId;
+
     public Template() {
     }
 
-    public Template(Long id, String tmlGuid, String tmlName, Long frmId, String tmlScript) {
+    public Template(Long id, String tmlGuid, String tmlName, Long frmId,
+                    String tmlScript, Long fldId) {
         this.id = id;
         this.tmlGuid = tmlGuid;
         this.tmlName = tmlName;
         this.frmId = frmId;
         this.tmlScript = tmlScript;
+        this.fldId = fldId;
     }
 
     public Long getId() {
@@ -80,5 +85,13 @@ public class Template implements Serializable {
 
     public void setTmlScript(String tmlScript) {
         this.tmlScript = tmlScript;
+    }
+
+    public Long getFldId() {
+        return fldId;
+    }
+
+    public void setFldId(Long fldId) {
+        this.fldId = fldId;
     }
 }

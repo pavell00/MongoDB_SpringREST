@@ -32,7 +32,8 @@ public class StoreProcTemplateImpl implements StoreProcTemplateRepository {
                 (String) result.getTmlGuid(),
                 (String) result.getTmlName(),
                 (Long) result.getFrmId(),
-                (String) result.getTmlScript()
+                (String) result.getTmlScript(),
+                (Long) result.getFldId()
           )).collect(Collectors.toList());
     }
 }
