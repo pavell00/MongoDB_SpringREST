@@ -1,12 +1,10 @@
 package SQLRest.Controller;
 
-import SQLRest.Model.Template;
 import SQLRest.Repository.StoredProcedureImpl.StoreProcTransListRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.List;
 
 @RestController
 @CrossOrigin
