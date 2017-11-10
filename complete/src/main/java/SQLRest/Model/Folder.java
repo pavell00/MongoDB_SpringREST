@@ -11,6 +11,7 @@ import java.io.Serializable;
         parameters = {
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "rootid"),
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typefolder"),
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "roleid")
         }
 )
 public class Folder implements Serializable {

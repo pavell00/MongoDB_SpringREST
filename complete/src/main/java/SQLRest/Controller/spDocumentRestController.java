@@ -20,9 +20,10 @@ public class spDocumentRestController {
     public List<Document> getDocuments(@RequestParam("rootid") Long rootId,
                     @RequestParam("startdate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdate,
                     @RequestParam("enddate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate enddate,
-                    @RequestParam("typedir") String typedir){
+                    @RequestParam("typedir") String typedir,
+                   @RequestParam("roleid") Long roleid){
         List<Document> documentList = storeProcDocumentRepository.getDocuments_sp(rootId, startdate,
-                enddate, typedir);
+                enddate, typedir, roleid);
         return documentList;
     }
 }

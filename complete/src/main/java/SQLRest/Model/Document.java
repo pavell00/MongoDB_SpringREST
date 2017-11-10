@@ -16,7 +16,8 @@ import java.time.LocalDateTime;
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "rootid"),
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = LocalDate.class, name = "startdate"),
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = LocalDate.class, name = "enddate"),
-                @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typedir")
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typedir"),
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "roleid")
         }
 )
 public class Document implements Serializable {

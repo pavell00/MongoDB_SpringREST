@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface StoreProcFolderRepository {
 
-    List<Folder> getFolders_sp(Long root_id, String type_folder);
+    List<Folder> getFolders_sp(Long root_id, String type_folder, Long roleid);
 }

@@ -15,8 +15,10 @@ public class spFolderRestController {
     private StoreProcFolderRepository storeProcFolderRepository;
 
     @RequestMapping(value = "/sp_folders", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<Folder> getFolders(@RequestParam("rootid") Long rootId, @RequestParam("typefolder") String typeFolder) {
-        List<Folder> folderList = storeProcFolderRepository.getFolders_sp(rootId, typeFolder);
+    public List<Folder> getFolders(@RequestParam("rootid") Long rootId,
+                                   @RequestParam("typefolder") String typeFolder,
+                                   @RequestParam("roleid") Long roleid) {
+        List<Folder> folderList = storeProcFolderRepository.getFolders_sp(rootId, typeFolder, roleid);
         return folderList;
     }
 }

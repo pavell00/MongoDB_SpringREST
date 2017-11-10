@@ -14,8 +14,9 @@ public class spDelOperationRestController {
     StoreProcDelOperationImpl storeProcDelOperation;
 
     @RequestMapping(value = "/sp_del_operation", method = RequestMethod.DELETE, headers = "Accept=application/json")
-    public String getPriceListsJSON(@RequestParam("docid") Long docId) throws SQLException {
+    public String getPriceListsJSON(@RequestParam("docid") Long docId,
+                                    @RequestParam("roleid") Long roleid) throws SQLException {
 
-        return storeProcDelOperation.delOperation(docId);
+        return storeProcDelOperation.delOperation(docId, roleid);
     }
 }

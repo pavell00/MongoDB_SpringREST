@@ -15,16 +15,17 @@ public class StoreProcDelOperationImpl {
     @Autowired
     private ApplicationConfiguration appConfig;
 
-    public String delOperation(Long docId) throws SQLException {
+    public String delOperation(Long docId, Long roleid) throws SQLException {
         String queryResult = "";
         Connection con = DriverManager.getConnection(
                 appConfig.appJdbcProp().get("url"),
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_del_operation(?) }");
+            CallableStatement proc = con.prepareCall("{ call dbo.sp_del_operation(?, ?) }");
             //Задаём входные параметры
             proc.setLong(1, docId);
+            proc.setLong(1, roleid);
             proc.executeQuery();
             ResultSet resultSet = proc.getResultSet();
             //установим указатель на первый елемент
@@ -35,7 +36,8 @@ public class StoreProcDelOperationImpl {
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
-                    "delOperation method, in class - StoreProcDelOperationImpl() ");
+                    "delOperation method, in class - StoreProcDelOperationImpl() with params docid="+docId+
+                    ", roleid="+ roleid);
         } finally {
             if (con != null) {
                 try {

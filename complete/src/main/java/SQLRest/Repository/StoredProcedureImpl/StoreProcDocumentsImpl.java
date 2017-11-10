@@ -20,7 +20,7 @@ public class StoreProcDocumentsImpl implements StoreProcDocumentRepository {
 
     @Override
     public List<Document> getDocuments_sp(Long root_id, LocalDate startDate,
-            LocalDate endDate, String typeDir) {
+            LocalDate endDate, String typeDir, Long roleid) {
 
         StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery("call_sp_documents");
 
@@ -29,6 +29,7 @@ public class StoreProcDocumentsImpl implements StoreProcDocumentRepository {
         query.setParameter("startdate", startDate);
         query.setParameter("enddate", endDate);
         query.setParameter("typedir", typeDir);
+        query.setParameter("roleid", roleid);
 
         // Call the stored procedure.
         List<Document> queryResultList = query.getResultList();

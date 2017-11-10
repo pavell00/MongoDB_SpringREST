@@ -14,8 +14,9 @@ public class spTransListRestControllerJSON {
     StoreProcTransListRepositoryImpl storeProcTransListRepository;
 
     @RequestMapping(value = "/sp_translist", method = RequestMethod.GET, headers = "Accept=application/json")
-    public String getTransList(@RequestParam("docid") Long docId) throws SQLException {
-        String result = storeProcTransListRepository.getTransList_sp(docId);
+    public String getTransList(@RequestParam("docid") Long docId,
+                               @RequestParam("roleid") Long roleid) throws SQLException {
+        String result = storeProcTransListRepository.getTransList_sp(docId, roleid);
         return result;
     }
 }

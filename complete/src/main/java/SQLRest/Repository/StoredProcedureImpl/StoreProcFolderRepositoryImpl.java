@@ -17,13 +17,14 @@ public class StoreProcFolderRepositoryImpl implements StoreProcFolderRepository 
     private EntityManager entityManager;
 
     @Override
-    public List<Folder> getFolders_sp(Long root_id, String type_folder) {
+    public List<Folder> getFolders_sp(Long root_id, String type_folder, Long roleid) {
 
         StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery("call_sp_folders");
 
         //  Set the parameters of the stored procedure.
         query.setParameter("rootid", root_id);
         query.setParameter("typefolder", type_folder);
+        query.setParameter("roleid", roleid);
 
         // Call the stored procedure.
         List<Folder> queryResultList = query.getResultList();

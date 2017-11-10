@@ -10,5 +10,5 @@ import java.util.List;
 public interface StoreProcDocumentRepository {
 
     List<Document> getDocuments_sp(Long root_id, LocalDate startDate,
-           LocalDate endDate, String typeDir);
+           LocalDate endDate, String typeDir, Long roleid);
 }
