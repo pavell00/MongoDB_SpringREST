@@ -10,34 +10,35 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Repository
-public class StoreProcDelOperationImpl {
-
+public class StoreProcFolderJsonImpl {
     @Autowired
     private ApplicationConfiguration appConfig;
+    public String getFolder_sp(Long rootid, String typefolder, Long roleid) throws SQLException {
 
-    public String delOperation(Long docId, Long roleid) throws SQLException {
         String queryResult = "";
         Connection con = DriverManager.getConnection(
                 appConfig.appJdbcProp().get("url"),
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_del_operation(?, ?) }");
+            CallableStatement proc = con.prepareCall("{ call dbo.sp_foldersJSON(?, ?, ?) }");
             //Задаём входные параметры
-            proc.setLong(1, docId);
-            proc.setLong(2, roleid);
+            proc.setLong(1, rootid);
+            proc.setString(2, typefolder);
+            proc.setLong(3, roleid);
             proc.executeQuery();
             ResultSet resultSet = proc.getResultSet();
-            //установим указатель на первый елемент
-            resultSet.next();
-            queryResult = resultSet.getString(1);
+            while (resultSet.next()){
+                queryResult += resultSet.getString(1);
+            }
             if (resultSet != null) resultSet.close();
             if (proc != null) proc.close();
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
-                    "delOperation method, in class - StoreProcDelOperationImpl() with params docid="+docId+
-                    ", roleid="+ roleid);
+                            "getFolder_sp method, in class - StoreProcFolderJsonImpl ",
+                    ex + ", with params rootid=" + rootid+ ", typefolder="
+                            + typefolder+", roleid"+roleid);
         } finally {
             if (con != null) {
                 try {

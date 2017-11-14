@@ -16,7 +16,7 @@ public class spDocumentRestController {
     @Autowired
     StoreProcDocumentRepository storeProcDocumentRepository;
 
-    @RequestMapping(value = "/sp_documents", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/sp_documents_off", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Document> getDocuments(@RequestParam("rootid") Long rootId,
                     @RequestParam("startdate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdate,
                     @RequestParam("enddate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate enddate,
