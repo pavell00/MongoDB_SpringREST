@@ -62,6 +62,7 @@ public class StoreProcDocumentsJsonImpl {
             while (resultSet.next()){
                 queryResult += resultSet.getString(1);
             }
+            if (queryResult.length() == 0) queryResult = "[]";
             if (resultSet != null) resultSet.close();
             if (proc != null) proc.close();
         } catch (Exception ex) {
