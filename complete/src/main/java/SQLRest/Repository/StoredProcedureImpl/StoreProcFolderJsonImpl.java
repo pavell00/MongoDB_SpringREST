@@ -16,12 +16,39 @@ public class StoreProcFolderJsonImpl {
     public String getFolder_sp(Long rootid, String typefolder, Long roleid) throws SQLException {
 
         String queryResult = "";
+        String sql="";
         Connection con = DriverManager.getConnection(
                 appConfig.appJdbcProp().get("url"),
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_foldersJSON(?, ?, ?) }");
+            switch (typefolder) {
+                case "document_type":
+                    sql = "{ call dbo.sp_FoldersDocsJSON(?, ?, ?) }";
+                    break;
+                case "account_type":
+                    sql = "{ call dbo.sp_FoldersAccountsJSON(?, ?, ?) }";
+                    break;
+                case "agent_type":
+                    sql = "{ call dbo.sp_FoldersAgentsJSON(?, ?, ?) }";
+                    break;
+                case "entity_type":
+                    sql = "{ call dbo.sp_FoldersEntitiesJSON(?, ?, ?) }";
+                    break;
+                case "misc_type":
+                    sql = "{ call dbo.sp_FoldersMiscsJSON(?, ?, ?) }";
+                    break;
+                case "binder_type":
+                    sql = "{ call dbo.sp_FoldersBindersJSON(?, ?, ?) }";
+                    break;
+                case "template_type":
+                    sql = "{ call dbo.sp_FoldersTemplatesJSON(?, ?, ?) }";
+                    break;
+                default:
+                    sql = "{ call dbo.sp_FoldersDocsJSON(?, ?, ?) }";
+                    break;
+            }
+            CallableStatement proc = con.prepareCall(sql);
             //Задаём входные параметры
             proc.setLong(1, rootid);
             proc.setString(2, typefolder);
@@ -31,13 +58,14 @@ public class StoreProcFolderJsonImpl {
             while (resultSet.next()){
                 queryResult += resultSet.getString(1);
             }
+            if (queryResult.length() == 0) queryResult = "[]";
             if (resultSet != null) resultSet.close();
             if (proc != null) proc.close();
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
                             "getFolder_sp method, in class - StoreProcFolderJsonImpl ",
-                    ex + ", with params rootid=" + rootid+ ", typefolder="
+                    ex + ", with params "+sql+", rootid=" + rootid+ ", typefolder="
                             + typefolder+", roleid"+roleid);
         } finally {
             if (con != null) {

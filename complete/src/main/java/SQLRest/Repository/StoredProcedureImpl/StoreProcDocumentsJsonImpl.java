@@ -69,7 +69,7 @@ public class StoreProcDocumentsJsonImpl {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
                             "getDocument_sp method, in class - StoreProcDocumentsJsonImpl ",
-                    ex + ", with params rootid=" + rootid+ ", startdate="
+                    ex + ", with params sql="+sql+", rootid=" + rootid+ ", startdate="
                             + startdate+", enddate="+enddate+", typedir"+typedir+", roleid"+roleid);
         } finally {
             if (con != null) {
