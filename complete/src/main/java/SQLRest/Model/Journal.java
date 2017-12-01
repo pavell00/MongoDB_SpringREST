@@ -7,7 +7,7 @@ import java.io.Serializable;
 @NamedStoredProcedureQuery(
         name = "call_sp_journals",
         resultClasses = Journal.class,
-        procedureName = "sp_journals",
+        procedureName = "acs.sp_journals",
         parameters = {
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "docid")
         }

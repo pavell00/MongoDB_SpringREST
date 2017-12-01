@@ -25,28 +25,28 @@ public class StoreProcDocumentsJsonImpl {
         try {
             switch (typedir) {
                 case "document_type":
-                    sql = "{ call dbo.sp_DocListDocumentsJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListDocumentsJSON(?, ?, ?, ?, ?) }";
                     break;
                 case "account_type":
-                    sql = "{ call dbo.sp_DocListAccountsJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListAccountsJSON(?, ?, ?, ?, ?) }";
                     break;
                 case "agent_type":
-                    sql = "{ call dbo.sp_DocListAgentsJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListAgentsJSON(?, ?, ?, ?, ?) }";
                     break;
                 case "entity_type":
-                    sql = "{ call dbo.sp_DocListEntitiesJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListEntitiesJSON(?, ?, ?, ?, ?) }";
                     break;
                 case "misc_type":
-                    sql = "{ call dbo.sp_DocListMiscsJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListMiscsJSON(?, ?, ?, ?, ?) }";
                     break;
                 case "binder_type":
-                    sql = "{ call dbo.sp_DocListBindersJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListBindersJSON(?, ?, ?, ?, ?) }";
                     break;
                 case "template_type":
-                    sql = "{ call dbo.sp_DocListTemplatesJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListTemplatesJSON(?, ?, ?, ?, ?) }";
                     break;
                 default:
-                    sql = "{ call dbo.sp_DocListDocumentsJSON(?, ?, ?, ?, ?) }";
+                    sql = "{ call acs.sp_DocListDocumentsJSON(?, ?, ?, ?, ?) }";
                     break;
             }
             CallableStatement proc = con.prepareCall(sql);

@@ -7,7 +7,7 @@ import java.io.Serializable;
 @NamedStoredProcedureQuery(
         name = "call_sp_template",
         resultClasses = Template.class,
-        procedureName = "sp_template",
+        procedureName = "acs.sp_template",
         parameters = {
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "tmlid"),
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "mode"),

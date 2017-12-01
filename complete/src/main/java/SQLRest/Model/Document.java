@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NamedStoredProcedureQuery(
         name = "call_sp_documents",
         resultClasses = Document.class,
-        procedureName = "sp_documents",
+        procedureName = "acs.sp_documents",
         parameters = {
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "rootid"),
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = LocalDate.class, name = "startdate"),

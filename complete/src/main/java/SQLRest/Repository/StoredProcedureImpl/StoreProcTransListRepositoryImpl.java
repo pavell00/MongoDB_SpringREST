@@ -22,7 +22,7 @@ public class StoreProcTransListRepositoryImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_transList(?, ?) }");
+            CallableStatement proc = con.prepareCall("{ call acs.sp_transList(?, ?) }");
             //Задаём входные параметры
             proc.setLong(1, docId);
             proc.setLong(2, roleid);

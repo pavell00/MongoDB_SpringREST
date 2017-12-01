@@ -22,7 +22,7 @@ public class StoreProcSessionImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_setSession(?) }");
+            CallableStatement proc = con.prepareCall("{ call acs.sp_setSession(?) }");
             //Задаём входные параметры
             proc.setString(1, nickname);
             proc.executeQuery();

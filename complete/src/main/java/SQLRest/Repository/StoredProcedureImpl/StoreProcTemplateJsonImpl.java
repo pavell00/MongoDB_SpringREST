@@ -21,7 +21,7 @@ public class StoreProcTemplateJsonImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_templateJSON(?, ?) }");
+            CallableStatement proc = con.prepareCall("{ call acs.sp_templateJSON(?, ?) }");
             //Задаём входные параметры
             proc.setLong(1, tmlid);
             proc.setLong(2, mode);

@@ -7,7 +7,7 @@ import java.io.Serializable;
 @NamedStoredProcedureQuery(
         name = "call_sp_folders",
         resultClasses = Folder.class,
-        procedureName = "sp_folders",
+        procedureName = "acs.sp_folders",
         parameters = {
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class, name = "rootid"),
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "typefolder"),

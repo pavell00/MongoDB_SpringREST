@@ -21,7 +21,7 @@ public class StoreProcPriceListsJsonImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call dbo.sp_search_pricelists() }");
+            CallableStatement proc = con.prepareCall("{ call acs.sp_search_pricelists() }");
             proc.executeQuery();
             ResultSet resultSet = proc.getResultSet();
             while (resultSet.next()){

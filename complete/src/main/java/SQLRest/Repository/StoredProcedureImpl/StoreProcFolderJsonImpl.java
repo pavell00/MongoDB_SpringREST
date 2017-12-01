@@ -24,28 +24,28 @@ public class StoreProcFolderJsonImpl {
         try {
             switch (typefolder) {
                 case "document_type":
-                    sql = "{ call dbo.sp_FoldersDocsJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersDocsJSON(?, ?, ?) }";
                     break;
                 case "account_type":
-                    sql = "{ call dbo.sp_FoldersAccountsJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersAccountsJSON(?, ?, ?) }";
                     break;
                 case "agent_type":
-                    sql = "{ call dbo.sp_FoldersAgentsJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersAgentsJSON(?, ?, ?) }";
                     break;
                 case "entity_type":
-                    sql = "{ call dbo.sp_FoldersEntitiesJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersEntitiesJSON(?, ?, ?) }";
                     break;
                 case "misc_type":
-                    sql = "{ call dbo.sp_FoldersMiscsJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersMiscsJSON(?, ?, ?) }";
                     break;
                 case "binder_type":
-                    sql = "{ call dbo.sp_FoldersBindersJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersBindersJSON(?, ?, ?) }";
                     break;
                 case "template_type":
-                    sql = "{ call dbo.sp_FoldersTemplatesJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersTemplatesJSON(?, ?, ?) }";
                     break;
                 default:
-                    sql = "{ call dbo.sp_FoldersDocsJSON(?, ?, ?) }";
+                    sql = "{ call acs.sp_FoldersDocsJSON(?, ?, ?) }";
                     break;
             }
             CallableStatement proc = con.prepareCall(sql);

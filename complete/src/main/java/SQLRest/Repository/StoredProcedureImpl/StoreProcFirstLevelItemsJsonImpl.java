@@ -10,30 +10,35 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Repository
-public class StoreProcAddOperationJsonImpl {
+public class StoreProcFirstLevelItemsJsonImpl {
     @Autowired
     private ApplicationConfiguration appConfig;
-    public String saveOperation(String operation) throws SQLException {
+    public String getFirstLevelItems_sp(Long roleid, Long tabid) throws SQLException {
+
         String queryResult = "";
         Connection con = DriverManager.getConnection(
                 appConfig.appJdbcProp().get("url"),
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call acs.sp_add_operation(?) }");
+            CallableStatement proc = con.prepareCall("{ call acs.sp_admin_getAccessFirstLevelitemsJSON(?, ?) }");
             //Задаём входные параметры
-            proc.setString(1, operation);
+            proc.setLong(1, roleid);
+            proc.setLong(2, tabid);
             proc.executeQuery();
+
             ResultSet resultSet = proc.getResultSet();
-            //установим указатель на первый елемент
-            resultSet.next();
-            queryResult = resultSet.getString(1);
+            while (resultSet.next()){
+                queryResult += resultSet.getString(1);
+            }
+            if (queryResult.length() == 0) queryResult = "[]";
             if (resultSet != null) resultSet.close();
             if (proc != null) proc.close();
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
-                            "saveOperation method, in class - StoreProcAddOperationJsonImpl() ");
+                    "getFirstLevelItems_sp method, in class - StoreProcFirstLevelItemsJsonImpl, in sp - " +
+                    "call acs.sp_admin_getAccessFirstLevelitemsJSON");
         } finally {
             if (con != null) {
                 try {

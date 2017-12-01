@@ -7,7 +7,7 @@ import java.io.Serializable;
 @NamedStoredProcedureQuery(
         name = "call_sp_findAgents",
         resultClasses = Agent.class,
-        procedureName = "sp_findAgents",
+        procedureName = "acs.sp_findAgents",
         parameters = {
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "criteria"),
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "valuestr"),

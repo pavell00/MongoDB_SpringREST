@@ -14,7 +14,7 @@ public class StoreProcTestImpl {
                 "jdbc:sqlserver://172.16.13.66\\\\SQL2:51880;databaseName=DGMZ2_DC3",
                 "sa",
                 "Radeon223245");
-        CallableStatement proc = con.prepareCall("{ call dbo.sp_search_pricelists() }");
+        CallableStatement proc = con.prepareCall("{ call acs.sp_search_pricelists() }");
         proc.executeQuery();
         ResultSet resultSet = proc.getResultSet();
         while (resultSet.next()){
