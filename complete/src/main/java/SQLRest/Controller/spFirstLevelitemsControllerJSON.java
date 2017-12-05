@@ -13,10 +13,9 @@ public class spFirstLevelitemsControllerJSON {
     StoreProcFirstLevelItemsJsonImpl storeProcFirstLevelItemsJson;
 
     @RequestMapping(value = "/sp_firstlevel", method = RequestMethod.GET, headers = "Accept=application/json")
-    public String getPriceListsJSON(@RequestParam("roleid") Long roleid,
-                                    @RequestParam("tabid") Long tabid) throws SQLException {
+    public String getPriceListsJSON(@RequestParam("roleid") Long roleid) throws SQLException {
 
-        String result = storeProcFirstLevelItemsJson.getFirstLevelItems_sp(roleid, tabid);
+        String result = storeProcFirstLevelItemsJson.getFirstLevelItems_sp(roleid);
         return result;
     }
 }

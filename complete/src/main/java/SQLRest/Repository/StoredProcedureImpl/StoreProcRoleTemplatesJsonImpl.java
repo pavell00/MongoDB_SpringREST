@@ -10,10 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Repository
-public class StoreProcFirstLevelItemsJsonImpl {
+public class StoreProcRoleTemplatesJsonImpl {
     @Autowired
     private ApplicationConfiguration appConfig;
-    public String getFirstLevelItems_sp(Long roleid) throws SQLException {
+    public String getRoleTemplates_sp(Long roleid) throws SQLException {
 
         String queryResult = "";
         Connection con = DriverManager.getConnection(
@@ -21,7 +21,7 @@ public class StoreProcFirstLevelItemsJsonImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call acs.sp_admin_getAccessFirstLevelitemsJSON(?) }");
+            CallableStatement proc = con.prepareCall("{ call acs.sp_admin_getRoleTemplates(?) }");
             //Задаём входные параметры
             proc.setLong(1, roleid);
             proc.executeQuery();
@@ -36,8 +36,8 @@ public class StoreProcFirstLevelItemsJsonImpl {
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
-                    "getFirstLevelItems_sp method, in class - StoreProcFirstLevelItemsJsonImpl, in sp - " +
-                    "call acs.sp_admin_getAccessFirstLevelitemsJSON");
+                    "getRoleTemplates_sp method, in class - StoreProcRoleTemplatesJsonImpl, in sp - " +
+                    "call acs.sp_admin_getRoleTemplates");
         } finally {
             if (con != null) {
                 try {

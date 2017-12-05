@@ -10,10 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Repository
-public class StoreProcFirstLevelItemsJsonImpl {
+public class StoreProcTest {
     @Autowired
     private ApplicationConfiguration appConfig;
-    public String getFirstLevelItems_sp(Long roleid) throws SQLException {
+    public String getTest_sp() throws SQLException {
 
         String queryResult = "";
         Connection con = DriverManager.getConnection(
@@ -21,23 +21,18 @@ public class StoreProcFirstLevelItemsJsonImpl {
                 appConfig.appJdbcProp().get("username"),
                 appConfig.appJdbcProp().get("password"));
         try {
-            CallableStatement proc = con.prepareCall("{ call acs.sp_admin_getAccessFirstLevelitemsJSON(?) }");
-            //Задаём входные параметры
-            proc.setLong(1, roleid);
+            CallableStatement proc = con.prepareCall("{ call acs.sp_testBindRateJSON }");
             proc.executeQuery();
-
             ResultSet resultSet = proc.getResultSet();
             while (resultSet.next()){
                 queryResult += resultSet.getString(1);
             }
-            if (queryResult.length() == 0) queryResult = "[]";
             if (resultSet != null) resultSet.close();
             if (proc != null) proc.close();
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
-                    "getFirstLevelItems_sp method, in class - StoreProcFirstLevelItemsJsonImpl, in sp - " +
-                    "call acs.sp_admin_getAccessFirstLevelitemsJSON");
+                    "getTest_sp method, in class - StoreProcTest ", ex);
         } finally {
             if (con != null) {
                 try {
