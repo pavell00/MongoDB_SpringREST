@@ -52,8 +52,10 @@ public class StoreProcDocumentsJsonImpl {
             CallableStatement proc = con.prepareCall(sql);
             //Задаём входные параметры
             proc.setLong(1, rootid);
-            proc.setString(2, startdate.toString());
-            proc.setString(3, enddate.toString());
+            //proc.setString(2, startdate.toString());
+            //proc.setString(3, enddate.toString());
+            proc.setDate(2, java.sql.Date.valueOf(startdate));
+            proc.setDate(3, java.sql.Date.valueOf(enddate));
             proc.setString(4, typedir);
             proc.setLong(5, roleid);
             proc.executeQuery();
@@ -68,10 +70,10 @@ public class StoreProcDocumentsJsonImpl {
         } catch (Exception ex) {
             queryResult = "";
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
-                            "getDocument_sp method, in class - StoreProcDocumentsJsonImpl ",
-                    ex + ", with params sql="+sql+", rootid=" + rootid+ ", startdate="
-                            + startdate+", enddate="+enddate+", typedir"+typedir+", roleid"+roleid);
+                            "getDocument_sp method, in class - StoreProcDocumentsJsonImpl");
         } finally {
+            /*Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.WARNING, "rootid=" + rootid+
+                    ", startdate="+startdate+", enddate="+enddate+", typedir="+typedir+", roleid="+roleid);*/
             if (con != null) {
                 try {
                     con.close();
