@@ -35,7 +35,6 @@ public class StoreProcAddAdminAccessTemplatesJsonImpl {
             Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, "error in " +
                     "saveAdminAccessToDocs method, in class - StoreProcAddAdminAccessTemplatesJsonImpl() ");
         } finally {
-            Logger.getLogger(SessionProperties.Jdbc.class.getName()).log(Level.SEVERE, tmls);
             if (con != null) {
                 try {
                     con.close();
